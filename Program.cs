@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using LogReg.Models;
+using ChefsNDishes.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
-builder.Services.AddDbContext<LogRegContext>(options =>
+builder.Services.AddDbContext<ChefsNDishesContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
