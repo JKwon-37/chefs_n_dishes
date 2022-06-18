@@ -1,5 +1,4 @@
 #pragma warning disable CS8618
-
 using Microsoft.EntityFrameworkCore;
 namespace ChefsNDishes.Models;
 // the ChefsNDishesContext class representing a session with our MySQL database, allowing us to query for or save data
