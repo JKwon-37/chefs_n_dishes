@@ -10,10 +10,24 @@ public class ChefsController : Controller
     {
         _context = context;
     }
-    
+
     [HttpGet("chef/new")]
     public IActionResult NewChef()
     {
-        return View("AddChef", "Chefs");
+        return View("AddChef");
+    }
+
+    [HttpPost("chef/create")]
+    public IActionResult CreateChef(Chef newChef)
+    {
+        if(ModelState.IsValid)
+        {
+            _context.Chefs.Add(newChef);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        } else
+        {
+            return NewChef();
+        }
     }
 }

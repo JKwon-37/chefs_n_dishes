@@ -15,6 +15,5 @@ public class Chef
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
-
     public List<Dish> Dishes {get;set;} = new List<Dish>();
 }

@@ -5,15 +5,20 @@
 <form asp-controller="Chefs" asp-action="CreateChef" method="POST">
     <div class="form-group">
         <label asp-for="FirstName"></label>
-        <span asp-validation-for="FirstName" class="val"></span>
+        <span asp-validation-for="@Model.FirstName" class="val"></span>
         <input asp-for="FirstName" class="form-control">
     </div>
     <div class="form-group">
         <label asp-for="LastName"></label>
-        <span asp-validation-for="LastName" class="val"></span>
+        <span asp-validation-for="@Model.LastName" class="val"></span>
         <input asp-for="LastName" class="form-control">
     </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth"></label>
+        <span asp-validation-for="@Model.DateOfBirth" class="val"></span>
+        <input asp-for="DateOfBirth" class="bg-white text-dark" type="datetime-local"/>
+    </div>
     <div class="text-center">
-        <input class="btn-primary text-center" type="submit" value="Login"/>
+        <input class="btn-primary text-center" type="submit" value="Add Chef"/>
     </div>
 </form>
