@@ -19,7 +19,7 @@ namespace ChefsNDishes.Migrations
                 .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ChefsNDishes.Models.Chef", b =>
+            modelBuilder.Entity("Chef", b =>
                 {
                     b.Property<int>("ChefId")
                         .ValueGeneratedOnAdd()
@@ -28,9 +28,8 @@ namespace ChefsNDishes.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DateOfBirth")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -57,10 +56,6 @@ namespace ChefsNDishes.Migrations
                     b.Property<int>("Calories")
                         .HasColumnType("int");
 
-                    b.Property<string>("Chef")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<int>("ChefId")
                         .HasColumnType("int");
 
@@ -84,18 +79,18 @@ namespace ChefsNDishes.Migrations
 
             modelBuilder.Entity("Dish", b =>
                 {
-                    b.HasOne("ChefsNDishes.Models.Chef", "Creator")
-                        .WithMany("Dishes")
+                    b.HasOne("Chef", "ChefsName")
+                        .WithMany("DishesCreated")
                         .HasForeignKey("ChefId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Creator");
+                    b.Navigation("ChefsName");
                 });
 
-            modelBuilder.Entity("ChefsNDishes.Models.Chef", b =>
+            modelBuilder.Entity("Chef", b =>
                 {
-                    b.Navigation("Dishes");
+                    b.Navigation("DishesCreated");
                 });
 #pragma warning restore 612, 618
         }

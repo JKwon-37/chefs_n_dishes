@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ChefsNDishes.Models;
 
 public class ChefsController : Controller
@@ -9,6 +9,13 @@ public class ChefsController : Controller
     public ChefsController(ChefsNDishesContext context)
     {
         _context = context;
+    }
+
+    [HttpGet("")]
+    public IActionResult AllChefs()
+    {
+        List<Chef> allChef = _context.Chefs.Include(chef => chef.DishesCreated).ToList();
+        return View("AllChefs", allChef);
     }
 
     [HttpGet("chef/new")]
